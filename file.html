@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+    <head>
+        <title>LED Screen calculator</title>
+    </head>
+
+    <body>
+        <h1>LED Screen calculator</h1>
+        <fieldset>
+            <legend>Screen Size</legend>
+            <label for="width-screen">Width</label>
+            <input id="width-screen" type="number" min="1" placeholder="width in mm" required>
+            <label for="length-screen">Length</label>
+            <input id="length-screen" type="number" min="1" placeholder="lenght in mm" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>LED module</legend>
+            <select id="pitch-module">
+                <option value="p125">P1.25</option>
+                <option value="p153">P1.53</option>
+                <option value="p156">P1.56</option>
+                <option value="p250">P2.5</option>
+                <option value="p300">P3</option>
+            </select>
+            <label for="width-module">Width</label>
+            <input id="width-module" type="number" min="1" placeholder="width in mm" required>
+            <label for="length-module">Length</label>
+            <input id="length-module" type="number" min="1" placeholder="lenght in mm" required>
+            <p>X : <span id="x-module">0</span></p>
+            <p>Y : <span id="y-module">0</span></p>
+        </fieldset>
+
+        <button type="button" id="valid">Valid</button>
+
+        <div id="output"></div>
+        <script src="script.js"></script>
+    </body>
+</html>

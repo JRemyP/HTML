@@ -7,30 +7,34 @@
 
     <body>
         <h1>LED Screen calculator</h1>
-        <fieldset>
-            <legend>Screen Size</legend>
-            <label for="width-screen">Width</label>
-            <input id="width-screen" type="number" min="1" placeholder="width in mm" required>
-            <label for="lenght-screen">lenght</label>
-            <input id="lenght-screen" type="number" min="1" placeholder="lenght in mm" required>
-        </fieldset>
+        <form>
+            <fieldset id="screen">
+                <legend>Screen Size</legend>
+                <label for="width">Width</label>
+                <input id="width" type="number" min="1" placeholder="width in mm" required>
+                <label for="lenght">lenght</label>
+                <input id="lenght" type="number" min="1" placeholder="lenght in mm" required>
 
-        <fieldset>
+                <button type="submit" id="valid">Valid</button>
+            </fieldset>
+        </form>
+        <fieldset id="module" class="hide">
             <legend>LED module</legend>
-            <select id="pitch-module">
+            <select id="pitch">
                 <option value="p125">P1.25</option>
                 <option value="p1538461538461538">P1.53</option>
                 <option value="p156">P1.56</option>
                 <option value="p250">P2.5</option>
                 <option value="p300">P3</option>
                 <option value="p400">P4</option>
+                <option value="p500">P5</option>
             </select>
-            <label for="width-module">Width</label>
-            <input id="width-module" type="number" min="1" placeholder="width in mm" required>
-            <label for="lenght-module">lenght</label>
-            <input id="lenght-module" type="number" min="1" placeholder="lenght in mm" required>
-            <p>X : <span id="x-module">0</span>px</p>
-            <p>Y : <span id="y-module">0</span>px</p>
+            <label for="width">Width</label>
+            <input id="width" type="number" min="1" placeholder="width in mm" required>
+            <label for="lenght">lenght</label>
+            <input id="lenght" type="number" min="1" placeholder="lenght in mm" required>
+            <p>X : <span id="x">0</span>px</p>
+            <p>Y : <span id="y">0</span>px</p>
         </fieldset>
 
         <button type="button" id="valid">Valid</button>

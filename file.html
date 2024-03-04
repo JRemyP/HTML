@@ -7,39 +7,70 @@
 
     <body>
         <h1>LED Screen calculator</h1>
-        <form>
-            <fieldset id="screen">
-                <legend>Screen Size</legend>
-                <label for="width">Width</label>
-                <input id="width" type="number" min="1" placeholder="width in mm" required>
-                <label for="lenght">lenght</label>
+        <form id="wanted-screen">
+            <fieldset>
+                <legend>Screen size wanted</legend>
+
+                <label for="lenght">Lenght</label>
                 <input id="lenght" type="number" min="1" placeholder="lenght in mm" required>
 
-                <button type="submit" id="valid">Valid</button>
+                <label for="width">Width</label>
+                <input id="width" type="number" min="1" placeholder="width in mm" required>
+                
+
             </fieldset>
         </form>
-        <fieldset id="module" class="hide">
-            <legend>LED module</legend>
-            <select id="pitch">
-                <option value="p125">P1.25</option>
-                <option value="p1538461538461538">P1.53</option>
-                <option value="p156">P1.56</option>
-                <option value="p250">P2.5</option>
-                <option value="p300">P3</option>
-                <option value="p400">P4</option>
-                <option value="p500">P5</option>
-            </select>
-            <label for="width">Width</label>
-            <input id="width" type="number" min="1" placeholder="width in mm" required>
-            <label for="lenght">lenght</label>
-            <input id="lenght" type="number" min="1" placeholder="lenght in mm" required>
-            <p>X : <span id="x">0</span>px</p>
-            <p>Y : <span id="y">0</span>px</p>
-        </fieldset>
 
-        <button type="button" id="valid">Valid</button>
+        <form id="module">
+            <fieldset>
+                <legend>LED module</legend>
+                <select id="pitch">
+                    <option value="p125">P1.25</option>
+                    <option value="p1538461538461538">P1.53</option>
+                    <option value="p156">P1.56</option>
+                    <option value="p250">P2.5</option>
+                    <option value="p300">P3</option>
+                    <option value="p400">P4</option>
+                    <option value="p500">P5</option>
+                </select>
+                <label for="lenght">lenght</label>
+                <input id="lenght" type="number" min="1" max="500" placeholder="mm" required>
+                <label for="width">width</label>
+                <input id="width" type="number" min="1" max="500" placeholder="mm" required>
 
-        <div id="output"></div>
+                <button type="submit" id="valid">Valid</button>
+                <p>X : <span id="x">0</span>px</p>
+                <p>Y : <span id="y">0</span>px</p>
+            </fieldset>
+        </form>
+
+        <form id="real">
+            <fieldset class="flex-vignette">
+                <legend>Real Screen</legend>
+                <div class="vignette">
+                    <h2>Dimensions</h2>
+                    <p>lenght : <span id="lenght">0</span> mm</p>
+                    <p>width : <span id="width">0</span> mm</p>
+                    <p>Area : <span id="area">0</span> m²</p>
+                </div>
+
+                <div class="vignette">
+                    <h2>Resolution</h2>
+                    <p>X : <span id="x-res">0</span> px</p>
+                    <p>Y : <span id="y-res">0</span> px</p>
+                    <p>Total : <span id="total-res">0</span> px</p>
+                </div>
+
+                <div class="vignette">
+                    <h2>Module quantity</h2>
+                    <p>X : <span id="x-module">0</span></p>
+                    <p>Y : <span id="y-module">0</span></p>
+                    <p>Total : <span id="total-module">0</span></p>
+                </div>
+            </fieldset>
+        </form>
+
+        <div id="output" ></div>
         <script src="script.js"></script>
     </body>
 </html>

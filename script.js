@@ -2,9 +2,12 @@
 const wantedScreenElements = document.querySelector('#wanted-screen');
 const moduleElements = document.querySelector('#module');
 const realScreenElements = document.querySelector('#real');
+const priceElements = document.querySelector('#pricing');
 
 const output = document.getElementById('output');
 const buttonValid = document.getElementById('valid');
+
+
 
 var wantedScreen = {
     lenghtElement : wantedScreenElements.querySelector('#lenght'),
@@ -27,16 +30,21 @@ var realScreen = {
     yModule: 0,
     totalModule : 0,
 
+    vpuOutputs : 0,
 
     widthElement : realScreenElements.querySelector('#width'),
     lenghtElement : realScreenElements.querySelector('#lenght'),
     areaElement : realScreenElements.querySelector('#area'),
+
     xResElement : realScreenElements.querySelector('#x-res'),
     yResElement : realScreenElements.querySelector('#y-res'),
     totalResElement : realScreenElements.querySelector('#total-res'),
+
     xModuleElement : realScreenElements.querySelector('#x-module'),
     yModuleElement : realScreenElements.querySelector('#y-module'),
     totalModuleElement : realScreenElements.querySelector('#total-module'),
+
+    vpuOutputsElement : realScreenElements.querySelector('#vpu-outputs'),
 }
 
 /* VARIABLES */
@@ -46,23 +54,22 @@ var module = {
     p:0,
     width:0,
     lenght:0,
+    price: 0,
     widthElement: moduleElements.querySelector('#width'),
     lenghtElement: moduleElements.querySelector('#lenght'),
     pElement: moduleElements.querySelector('#pitch'),
     xElement: moduleElements.querySelector('#x'),
     yElement: moduleElements.querySelector('#y'),
+    priceElement: moduleElements.querySelector('#price'),
 }
 
-/*function console(m){
+var price = {
+    total : 0,
+    area : 0,
+    totalElement : priceElements.querySelector('#total'),
+    areaElement : priceElements.querySelector('#m2'),
+}
 
-    let i = parseInt(m.value);
-    if(isNaN(i)){
-        i = parseInt(m); 
-    }
-    HTMLString=`<p>- ${m} : ${i}</p>`
-    output.insertAdjacentHTML("afterbegin", HTMLString);
-
-}*/
 
 function displayPitch(){
     HTMLString=`
@@ -71,13 +78,12 @@ function displayPitch(){
     output.innerHTML = HTMLString;
 }
 
-function calculateTotalScreen(event){
-    event.preventDefault();
-
-    
+function calculateTotalScreen(){
 
     module.width = parseInt(module.widthElement.value);
     module.lenght = parseInt(module.lenghtElement.value);
+    module.price = module.priceElement.value;
+
     let pStr = `${module.pElement.value}`;
     pStr = pStr.replace('p','');
     pStr = pStr.slice(0, 1) + "." + pStr.slice(1);
@@ -107,11 +113,11 @@ function calculateTotalScreen(event){
 
     realScreen.lenght = realScreen.xModule * module.lenght;
     realScreen.width = realScreen.yModule * module.width;
-    realScreen.widthElement.innerHTML = realScreen.width;
-    realScreen.lenghtElement.innerHTML = realScreen.lenght;
+    realScreen.widthElement.innerHTML = realScreen.width.toLocaleString();
+    realScreen.lenghtElement.innerHTML = realScreen.lenght.toLocaleString();
 
     realScreen.area = (realScreen.lenght/1000.0) * (realScreen.width/1000.0);
-    realScreen.areaElement.innerHTML = realScreen.area;
+    realScreen.areaElement.innerHTML = realScreen.area.toFixed(3);
 
 
     realScreen.xRes = realScreen.xModule * module.x;
@@ -120,46 +126,21 @@ function calculateTotalScreen(event){
     realScreen.yResElement.innerHTML = realScreen.yRes;
 
     realScreen.totalRes = realScreen.xRes * realScreen.yRes;
-    realScreen.totalResElement.innerHTML = realScreen.totalRes;
+    realScreen.totalResElement.innerHTML = realScreen.totalRes.toLocaleString();
 
+    realScreen.vpuOutputs = Math.ceil(realScreen.totalRes / 650000.0);
+    realScreen.vpuOutputsElement.innerHTML = realScreen.vpuOutputs;
 
+    price.total = module.price * realScreen.totalModule;
+    price.area = price.total / realScreen.area;
 
-    /*console.log("wantedScreen.lenght : " + wantedScreen.lenght);
-    console.log("wantedScreen.width : " +wantedScreen.width);
-
-    console.log("module.lenght : " +module.lenght);
-    console.log("module.width : " +module.width);
-    console.log("module.x : " +module.x);
-    console.log("module.y : " +module.y);
-    console.log("module.p : " +module.p);
-
-    console.log("realScreen.lenght : " +realScreen.lenght);
-    console.log("realScreen.width : " +realScreen.width);
-    console.log("realScreen.xRes : " +realScreen.xRes);
-    console.log("realScreen.yRes : " +realScreen.yRes);
-    console.log("realScreen.xModule : " +realScreen.xModule);
-    console.log("realScreen.yModule : " +realScreen.yModule);*/
+    price.totalElement.innerHTML = price.total.toLocaleString();
+    price.areaElement.innerHTML = price.area.toFixed(2);
 
 }
 
-
-function hideModule(){
-    wantedScreen.widthElement.removeAttribute("readonly");
-    wantedScreen.widthElement.value="";
-    wantedScreen.lenghtElement.removeAttribute("readonly");
-    wantedScreen.lenghtElement.value="";
-    wantedScreen.validElement.innerHTML = "Valid";
-    moduleElements.classList.add('hide'); 
-}
-
-function revealModule(){
-    wantedScreen.widthElement.setAttribute("readonly", true);
-    wantedScreen.lenghtElement.setAttribute("readonly", true);
-    wantedScreen.validElement.innerHTML = "Clear";
-    moduleElements.classList.remove('hide'); 
-}
-
-moduleElements.addEventListener('submit', calculateTotalScreen);
-
+moduleElements.addEventListener('change', calculateTotalScreen);
+wantedScreenElements.addEventListener('change', calculateTotalScreen);
 //screenWidth.addEventListener('change', console);
 
+calculateTotalScreen();

@@ -15,7 +15,7 @@ body{
 }
 
 .vignette{
-    border : 1px solid black;
+    border : 2px solid black;
     max-width : 300px;
     padding-right: 10px;
     padding-left: 10px;

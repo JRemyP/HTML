@@ -1,6 +1,45 @@
+@keyframes ombre{
+    0% {
+        text-shadow:-15px 15px 15px black;
+    }
+    50%{
+        text-shadow:15px 15px 15px black;
+    }
+    100%{
+        text-shadow:-15px 15px 15px black;
+    }
+}
+
 body{
-    background-color:rgb(145, 144, 144);
+    background-color:rgb(200, 200, 200);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1{
+    text-align : center;
+    animation: ombre 5s ease-in-out infinite;
+}
+
+fieldset{
+    display : flex;
+    flex-direction: column;
+    min-width: 25%;
+    max-width: 75%;
+    width:fit-content;
+    margin : auto;
+}
+
+input, select{
+    width : 100px;
+    margin: auto;
+    border-radius: 20px;
+    text-align: center;
+}
+
+label{
+    position:relative;
+    right : 50px;
+    text-align : center;
 }
 
 #output{
@@ -15,7 +54,8 @@ body{
 }
 
 .vignette{
-    border : 2px solid black;
+    border : 1px solid black;
+    box-shadow: grey 3px 3px 3px 3px;
     max-width : 300px;
     padding-right: 10px;
     padding-left: 10px;

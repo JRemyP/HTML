@@ -1,8 +1,8 @@
 
-const wantedScreenElements = document.querySelector('#wanted-screen');
-const moduleElements = document.querySelector('#module');
-const realScreenElements = document.querySelector('#real');
-const priceElements = document.querySelector('#pricing');
+const wantedScreenElements = document.getElementById('wanted-screen');
+const moduleElements = document.getElementById('module');
+const realScreenElements = document.getElementById('real');
+const priceElements = document.getElementById('pricing');
 
 const output = document.getElementById('output');
 const buttonValid = document.getElementById('valid');
@@ -134,13 +134,11 @@ function calculateTotalScreen(){
     price.total = module.price * realScreen.totalModule;
     price.area = price.total / realScreen.area;
 
-    price.totalElement.innerHTML = price.total.toLocaleString();
-    price.areaElement.innerHTML = price.area.toFixed(2);
+    price.totalElement.innerHTML = price.total.toLocaleString() + " €";
+    price.areaElement.innerHTML = price.area.toFixed(2) + " €";
 
 }
 
 moduleElements.addEventListener('change', calculateTotalScreen);
 wantedScreenElements.addEventListener('change', calculateTotalScreen);
 //screenWidth.addEventListener('change', console);
-
-calculateTotalScreen();

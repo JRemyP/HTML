@@ -6,9 +6,8 @@
     </head>
 
     <body>
-        <h1>LED Screen calculator</h1>
-        <form id="wanted-screen">
-            <fieldset>
+        <h1>LED SCREEN CALCULATOR</h1>
+            <fieldset id="wanted-screen">
                 <legend>Screen size wanted</legend>
 
                 <label for="lenght">Lenght</label>
@@ -16,13 +15,9 @@
 
                 <label for="width">Width</label>
                 <input id="width" type="number" min="1" placeholder="width in mm" required>
-                
-
             </fieldset>
-        </form>
 
-        <form id="module">
-            <fieldset>
+            <fieldset id="module">
                 <legend>LED module</legend>
                 <select id="pitch">
                     <option value="p125">P1.25</option>
@@ -34,18 +29,17 @@
                     <option value="p500">P5</option>
                 </select>
                 <label for="lenght">lenght</label>
-                <input id="lenght" type="number" min="1" max="500" placeholder="mm" required>
+                <input id="lenght" type="number" min="1" max="500" placeholder="mm">
                 <label for="width">width</label>
-                <input id="width" type="number" min="1" max="500" placeholder="mm" required>
+                <input id="width" type="number" min="1" max="500" placeholder="mm">
+                <label for="price">Price</label>
+                <input id="price" type="number" min="1" max="500" placeholder="€">
 
-                <button type="submit" id="valid">Valid</button>
                 <p>X : <span id="x">0</span>px</p>
                 <p>Y : <span id="y">0</span>px</p>
             </fieldset>
-        </form>
 
-        <form id="real">
-            <fieldset class="flex-vignette">
+            <fieldset id="real" class="flex-vignette">
                 <legend>Real Screen</legend>
                 <div class="vignette">
                     <h2>Dimensions</h2>
@@ -67,10 +61,20 @@
                     <p>Y : <span id="y-module">0</span></p>
                     <p>Total : <span id="total-module">0</span></p>
                 </div>
-            </fieldset>
-        </form>
 
-        <div id="output" ></div>
+                <div class="vignette">
+                    <h2>VPU dimensions</h2>
+                    <p>outputs RJ45 quantity : <span id="vpu-outputs">0</span></p>
+                </div>
+            </fieldset>
+
+        <fieldset id="pricing">
+            <legend>Pricing</legend>
+            <p>By m² : <span id="m2"></span></p>
+            <p>Total : <span id="total"></span></p>
+        </fieldset>
+
+        <div id="output"></div>
         <script src="script.js"></script>
     </body>
 </html>

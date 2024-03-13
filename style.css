@@ -10,9 +10,32 @@
     }
 }
 
+@keyframes vignette{
+    0%{
+        transform : scale(1);
+    }
+    100%{
+        transform : scale(2);
+    }
+}
+
 body{
-    background-color:rgb(200, 200, 200);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: linear-gradient(#e66465, #9198e5);
+    height:100vh;
+    font-family: "Quicksand", sans-serif;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-style:normal;
+    font-weight: 300;
+
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 25%;
+    max-width: 75%;
+    width: fit-content;
+    margin : auto;
 }
 
 h1{
@@ -20,26 +43,11 @@ h1{
     animation: ombre 5s ease-in-out infinite;
 }
 
-fieldset{
-    display : flex;
-    flex-direction: column;
-    min-width: 25%;
-    max-width: 75%;
-    width:fit-content;
-    margin : auto;
-}
-
 input, select{
-    width : 100px;
+    width : 150px;
     margin: auto;
     border-radius: 20px;
     text-align: center;
-}
-
-label{
-    position:relative;
-    right : 50px;
-    text-align : center;
 }
 
 #output{
@@ -52,8 +60,15 @@ label{
     display:flex;
     flex-direction: row;
 }
+.vignette:hover{
+    transform : scale(1.5);
+    transition-duration:0.25s;
+    z-index:1;
+}
 
 .vignette{
+    background-image: linear-gradient(#e66465, #9198e5);
+    transition-duration:0.25s;
     border : 1px solid black;
     box-shadow: grey 3px 3px 3px 3px;
     max-width : 300px;
@@ -62,4 +77,10 @@ label{
     margin-right: 10px;
     margin-left: 10px;
     border-radius: 10px;
+}
+
+#infos-module{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

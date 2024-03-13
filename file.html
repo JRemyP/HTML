@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <title>LED Screen calculator</title>
     <head>
         <title>LED Screen calculator</title>
     </head>
 
-    <body>
+    <header>
         <h1>LED SCREEN CALCULATOR</h1>
+    </header>
+    <body>
             <fieldset id="wanted-screen">
                 <legend>Screen size wanted</legend>
 
-                <label for="lenght">Lenght</label>
-                <input id="lenght" type="number" min="1" placeholder="lenght in mm" required>
+                <label for="length">length</label>
+                <input id="length" type="number" min="1" placeholder="length in mm" required>
 
                 <label for="width">Width</label>
                 <input id="width" type="number" min="1" placeholder="width in mm" required>
@@ -19,60 +25,30 @@
 
             <fieldset id="module">
                 <legend>LED module</legend>
-                <select id="pitch">
-                    <option value="p125">P1.25</option>
-                    <option value="p1538461538461538">P1.53</option>
-                    <option value="p156">P1.56</option>
-                    <option value="p250">P2.5</option>
-                    <option value="p300">P3</option>
-                    <option value="p400">P4</option>
-                    <option value="p500">P5</option>
-                </select>
-                <label for="lenght">lenght</label>
-                <input id="lenght" type="number" min="1" max="500" placeholder="mm">
-                <label for="width">width</label>
-                <input id="width" type="number" min="1" max="500" placeholder="mm">
-                <label for="price">Price</label>
-                <input id="price" type="number" min="1" max="500" placeholder="€">
+                <div class="flex-module">
+                    <label for="pitch-select">Pitch</label>
+                    <select id="pitch-select">
+                        
+                    </select>
 
-                <p>X : <span id="x">0</span>px</p>
-                <p>Y : <span id="y">0</span>px</p>
+                    <label for="size-select">Dimensions</label>
+                    <select id="size-select">
+
+                    </select>
+                </div>
+                <div id="infos-module">
+                    <p>X : <span id="x">0</span>px</p>
+                    <p>Y : <span id="y">0</span>px</p>
+                </div>
             </fieldset>
 
             <fieldset id="real" class="flex-vignette">
-                <legend>Real Screen</legend>
-                <div class="vignette">
-                    <h2>Dimensions</h2>
-                    <p>lenght : <span id="lenght">0</span> mm</p>
-                    <p>width : <span id="width">0</span> mm</p>
-                    <p>Area : <span id="area">0</span> m²</p>
-                </div>
 
-                <div class="vignette">
-                    <h2>Resolution</h2>
-                    <p>X : <span id="x-res">0</span> px</p>
-                    <p>Y : <span id="y-res">0</span> px</p>
-                    <p>Total : <span id="total-res">0</span> px</p>
-                </div>
-
-                <div class="vignette">
-                    <h2>Module quantity</h2>
-                    <p>X : <span id="x-module">0</span></p>
-                    <p>Y : <span id="y-module">0</span></p>
-                    <p>Total : <span id="total-module">0</span></p>
-                </div>
-
-                <div class="vignette">
-                    <h2>VPU dimensions</h2>
-                    <p>outputs RJ45 quantity : <span id="vpu-outputs">0</span></p>
-                </div>
             </fieldset>
 
-        <fieldset id="pricing">
-            <legend>Pricing</legend>
-            <p>By m² : <span id="m2"></span></p>
-            <p>Total : <span id="total"></span></p>
-        </fieldset>
+            <fieldset id="pricing">
+
+            </fieldset>
 
         <div id="output"></div>
         <script src="script.js"></script>

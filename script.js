@@ -89,7 +89,7 @@ const moduleData = [
         size : [
             {length : 320, width : 160, x : 64, y : 32, price : 55},
         ]
-    },
+    }
 ];
 
 const setPitchSelectOption = () => {
@@ -179,76 +179,3 @@ pitchSelectElement.addEventListener('change', displayInfosScreen);
 sizeSelectElement.addEventListener('change', displayInfosScreen);
 lengthInputElement.addEventListener('change', displayInfosScreen);
 widthInputElement.addEventListener('change', displayInfosScreen);
-
-
-
-
-
-
-
-
-
-
-
-
-
-function calculateTotalScreen(){
-
-    module.width = parseInt(module.widthElement.value);
-    module.length = parseInt(module.lengthElement.value);
-    module.price = module.priceElement.value;
-
-    let pStr = `${module.pElement.value}`;
-    pStr = pStr.replace('p','');
-    pStr = pStr.slice(0, 1) + "." + pStr.slice(1);
-    module.p = parseFloat(pStr);
-
-    if(module.p == 0 || module.length == 0 || module.width == 0){
-        return ;
-    }
-
-    module.x = ~~(module.length / module.p);
-    module.y = ~~(module.width / module.p);
-
-    module.xElement.innerHTML = module.x;
-    module.yElement.innerHTML = module.y;
-
-
-    wantedScreen.length = parseInt(wantedScreen.lengthElement.value);
-    realScreen.xModule = Math.ceil(wantedScreen.length / module.length);
-    realScreen.xModuleElement.innerHTML = realScreen.xModule;
-
-    wantedScreen.width= parseInt(wantedScreen.widthElement.value);
-    realScreen.yModule = Math.ceil(wantedScreen.width / module.width);
-    realScreen.yModuleElement.innerHTML = realScreen.yModule;
-
-    realScreen.totalModule = realScreen.yModule * realScreen.xModule ;
-    realScreen.totalModuleElement.innerHTML = realScreen.totalModule;
-
-    realScreen.length = realScreen.xModule * module.length;
-    realScreen.width = realScreen.yModule * module.width;
-    realScreen.widthElement.innerHTML = realScreen.width.toLocaleString();
-    realScreen.lengthElement.innerHTML = realScreen.length.toLocaleString();
-
-    realScreen.area = (realScreen.length/1000.0) * (realScreen.width/1000.0);
-    realScreen.areaElement.innerHTML = realScreen.area.toFixed(3);
-
-
-    realScreen.xRes = realScreen.xModule * module.x;
-    realScreen.yRes = realScreen.yModule * module.y;
-    realScreen.xResElement.innerHTML = realScreen.xRes;
-    realScreen.yResElement.innerHTML = realScreen.yRes;
-
-    realScreen.totalRes = realScreen.xRes * realScreen.yRes;
-    realScreen.totalResElement.innerHTML = realScreen.totalRes.toLocaleString();
-
-    realScreen.vpuOutputs = Math.ceil(realScreen.totalRes / 650000.0);
-    realScreen.vpuOutputsElement.innerHTML = realScreen.vpuOutputs;
-
-    price.total = module.price * realScreen.totalModule;
-    price.area = price.total / realScreen.area;
-
-    price.totalElement.innerHTML = price.total.toLocaleString() + " €";
-    price.areaElement.innerHTML = price.area.toFixed(2) + " €";
-
-}
